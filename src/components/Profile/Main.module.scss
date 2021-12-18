@@ -1,10 +1,18 @@
 .content {
     grid-area: content;
-    .background {
-        width: 100%;
-    }
     .avatar {
         width: 150px;
         color: aliceblue;
+    }
+    .area {
+        margin-top: 50px;
+    }
+    input {
+        border: 1px solid black;
+    }
+    button {
+        border: 1px solid black;
+        padding: 20px;
+        margin: 10px 0;
     }
 }

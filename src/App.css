@@ -37,6 +37,9 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*NULL*/
 
+body {
+	background-color: #edeff0;
+}
 .wrapper {
     max-width: 1000px;
     margin: 0 auto;
@@ -44,8 +47,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 .social {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 60px 1fr;
+    grid-template-columns: 180px 1fr;
+    grid-template-rows: 50px 1fr;
     grid-template-areas: 
     'header header'
     'side content';
