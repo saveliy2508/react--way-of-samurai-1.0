@@ -48,39 +48,5 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     grid-template-rows: 60px 1fr;
     grid-template-areas: 
     'header header'
-    'side main';
-}
-
-.header {
-    grid-area: header;
-}
-
-.header__logo {
-    max-width: 50px;
-}
-
-.side {
-    grid-area: side;
-}
-
-.side-bar__menu {
-    padding-top: 30px;
-}
-
-.side-bar__link {
-    list-style-type: none;
-    font-size: 24px;
-    padding-bottom: 20px;
-}
-
-.main {
-    grid-area: main;
-}
-
-.content__img {
-    width: 100%;
-}
-.content__avatar-wrapper{
-    width: 150px;
-    color: aliceblue;
-}
+    'side content';
+} 

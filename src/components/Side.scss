@@ -1,0 +1,11 @@
+.side {
+    grid-area: side;
+    .side-bar__menu {
+        padding-top: 30px;
+    }
+    .side-bar__link {
+        list-style-type: none;
+        font-size: 24px;
+        padding-bottom: 20px;
+    }
+}

@@ -1,0 +1,10 @@
+.content {
+    grid-area: content;
+    .content__img {
+        width: 100%;
+    }
+    .content__avatar-wrapper {
+        width: 150px;
+        color: aliceblue;
+    }
+}
