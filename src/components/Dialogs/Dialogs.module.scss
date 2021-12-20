@@ -1,12 +1,16 @@
-.avatar {
-    width: 150px;
-    color: aliceblue;
+.content {
+    grid-area: content;
+    border: 1px solid black;
+    .avatar {
+        width: 150px;
+        color: aliceblue;
+    }
     .area {
         margin-top: 50px;
     }
     input {
         border: 1px solid black;
-    }
+    } 
     button {
         border: 1px solid black;
         padding: 20px;
