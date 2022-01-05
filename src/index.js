@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import state from './components/redux/state.js'
 
 let postsData = [
   { id: 1, message: "Hi, how are you!", likes: "15" },
@@ -27,7 +28,7 @@ let dialogsData = [
 
 ReactDOM.render(
   <React.StrictMode>
-    <App postsData={postsData} messagesData={messagesData} dialogsData={dialogsData} />
+    <App state={state} />
   </React.StrictMode>,
   document.getElementById('root')
 );
