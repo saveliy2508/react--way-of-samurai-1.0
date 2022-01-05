@@ -7,19 +7,19 @@ const Side = () => {
         <div className={s.side}>
             <ul className={s.menu}>
                 <li className={s.link}>
-                    <NavLink to="/profile" className = {nav => nav.isActive ? s.active : s.link}>Profile</NavLink>
+                    <NavLink to="/profile" className={nav => nav.isActive ? s.active : s.link}>Profile</NavLink>
                 </li>
                 <li className={s.link} >
-                    <NavLink to="/message" className = {nav => nav.isActive ? s.active : s.link}>Message</NavLink>
+                    <NavLink to="/message" className={nav => nav.isActive ? s.active : s.link}>Message</NavLink>
                 </li>
                 <li className={s.link}>
-                    News
+                    <NavLink to="/news" className={nav => nav.isActive ? s.active : s.link}>News</NavLink>
                 </li>
                 <li className={s.link}>
-                    Music
+                    <NavLink to="/music" className={nav => nav.isActive ? s.active : s.link}>Music</NavLink>
                 </li>
                 <li className={s.link}>
-                    Settings
+                    <NavLink to="/settings" className={nav => nav.isActive ? s.active : s.link}>Settings</NavLink>
                 </li>
             </ul>
         </div>)
