@@ -1,8 +1,11 @@
 import React from "react";
 import s from './Side.module.scss'
 import { NavLink } from 'react-router-dom'
+import FriendsItem from './Friends/FriendsItem'
 
-const Side = () => {
+const Side = (props) => {
+    let friends = props.friends
+        .map(f => <FriendsItem picture={f.picture} name={f.name} />)
     return (
         <div className={s.side}>
             <ul className={s.menu}>
@@ -20,6 +23,12 @@ const Side = () => {
                 </li>
                 <li className={s.link}>
                     <NavLink to="/settings" className={nav => nav.isActive ? s.active : s.link}>Settings</NavLink>
+                </li>
+                <li className={`${s.link} ${s.friends}`}>
+                    Friends
+                    <div className={s.friendsItems}>
+                        {friends}
+                    </div>
                 </li>
             </ul>
         </div>)

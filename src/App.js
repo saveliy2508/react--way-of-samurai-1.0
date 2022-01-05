@@ -12,7 +12,7 @@ const App = (props) => {
       <div className="wrapper">
         <div className='social'>
           <Header />
-          <Side />
+          <Side  friends={props.state.sidebar.friends} />
           <div className="content-wrapper">
             <Routes>
               <Route path='/profile/*' element={<Main postsData={props.state.profilePage.postsData} />} />
