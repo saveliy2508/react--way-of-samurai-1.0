@@ -26,7 +26,7 @@ const Dialogs = (props) => {
     return (
         <div className={s.dialogs}>
             <div>{dialogsElements}</div>
-            <div>{messageElements}<input type='text' ref={newMessageElement} value={props.newMessageText} onChange={onMessageChange}></input><button onClick={addMessage}>send a mess</button></div>
+            <div>{messageElements}<input type='text' ref={newMessageElement} value={props.newMessageText} onChange={onMessageChange}></input><button onClick={addMessage}>send a messkekw</button></div>
         </div>
     )
 }
