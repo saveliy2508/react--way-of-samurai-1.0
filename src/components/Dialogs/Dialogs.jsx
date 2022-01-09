@@ -9,24 +9,27 @@ const Dialogs = (props) => {
     let newMessageElement = React.useRef();
     let addMessage = () => {
         let text = newMessageElement.current.value;
-        props.addMessage(text)
+        props.dialogsPage.addMessage(text)
     }
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        props.updateNewMessage(text)
+        props.dialogsPage.updateNewMessage(text)
     }
 
-    let messageElements = props.messagesData
+    let messageElements = props.dialogsPage.messagesData
         .map(m => <Messages message={m.message} />)
 
-    let dialogsElements = props.dialogsData
+    let dialogsElements = props.dialogsPage.dialogsData
         .map(d => <DialogItem name={d.name} id={d.id} />)
 
     return (
         <div className={s.dialogs}>
             <div>{dialogsElements}</div>
-            <div>{messageElements}<input type='text' ref={newMessageElement} value={props.newMessageText} onChange={onMessageChange}></input><button onClick={addMessage}>send a messkekw</button></div>
+            <div>{messageElements}
+                <input type='text' ref={newMessageElement} value={props.dialogsPage.newMessageText} onChange={onMessageChange}></input>
+                <button onClick={addMessage}>send a mess</button>
+            </div>
         </div>
     )
 }
