@@ -5,7 +5,6 @@ import Messages from './Messages/Messages'
 
 
 const Dialogs = (props) => {
-
     let newMessageElement = React.useRef();
     let addMessage = () => {
         let text = newMessageElement.current.value;
