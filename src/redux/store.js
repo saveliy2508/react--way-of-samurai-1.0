@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import './../index.css';
 import App from './../App';
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+
 let store = {
     _rerenderEntireTree() {
         ReactDOM.render(
@@ -77,6 +83,24 @@ let store = {
         }
     }
 }
+
+export const addPostActionCreator = () => {
+    return {
+        type: ADD_POST
+    }
+}
+export const updateNewPostActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_POST,
+        newText: text,
+    }
+}
+
+export const addMessageActionCreator = () => ({type:ADD_MESSAGE})
+export const updateNewMessageActionCreator = (text) => ({
+    type: UPDATE_NEW_MESSAGE,
+    newText: text,
+})
 
 export default store;
 window.store = store;
