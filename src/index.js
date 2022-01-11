@@ -2,7 +2,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store'
 
-store._rerenderEntireTree(store)
+store._rerenderEntireTree()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

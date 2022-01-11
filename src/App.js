@@ -12,16 +12,24 @@ const App = (props) => {
       <div className="wrapper">
         <div className='social'>
           <Header />
-          <Side friends={props.state.sidebar.friends} />
+          <Side
+            friends={props.store.getState().sidebar.friends}
+          />
           <div className="content-wrapper">
             <Routes>
               <Route path='/profile/*' element={
                 <Main
-                  profilePage={props.state.profilePage} />
-              } />
+                  profilePage={props.store.getState().profilePage}
+                  addPost={props.store.addPost}
+                  updateNewPost={props.store.updateNewPost}
+                />}
+              />
               <Route path='/message/*' element={
                 <Dialogs
-                  dialogsPage={props.state.dialogsPage} />
+                  dialogsPage={props.store.getState().dialogsPage}
+                  addMessage={props.store.addMessage.bind(props.store)}
+                  updateNewMessage={props.store.updateNewMessage}
+                />
               } />
             </Routes>
           </div>

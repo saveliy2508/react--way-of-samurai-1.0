@@ -7,7 +7,7 @@ let store = {
     _rerenderEntireTree() {
         ReactDOM.render(
             <React.StrictMode>
-                <App state={store.get_state()} />
+                <App store={store} state={store.getState()}/>
             </React.StrictMode>,
             document.getElementById('root')
         );
@@ -26,20 +26,6 @@ let store = {
                 { id: 2, message: "I am a programmer", likes: "20" },
             ],
             newPostText: '',
-            addPost: () => {
-                let newPost = {
-                    id: 5,
-                    message: store._state.profilePage.newPostText,
-                    likes: 0
-                }
-                store._state.profilePage.postsData.push(newPost)
-                store._state.profilePage.newPostText = ''
-                store._rerenderEntireTree(store._state)
-            },
-            updateNewPost: (newText) => {
-                store._state.profilePage.newPostText = newText;
-                store._rerenderEntireTree(store._state)
-            }
         },
 
         dialogsPage: {
@@ -57,24 +43,38 @@ let store = {
                 { id: '6', name: 'Vasya' },
             ],
             newMessageText: '',
-            addMessage: () => {
-                let newMessage = {
-                    id: 4,
-                    message: store._state.dialogsPage.newMessageText,
-                }
-                store._state.dialogsPage.messagesData.push(newMessage)
-                store._state.dialogsPage.newMessageText = ''
-                store._rerenderEntireTree(store._state)
-            },
-            updateNewMessage: (newText) => {
-                store._state.dialogsPage.newMessageText = newText;
-                store._rerenderEntireTree(store._state)
-            }
         },
     },
-    get_state() {
+    getState() {
         return store._state;
     },
+    addPost() {
+        let newPost = {
+            id: 5,
+            message: store._state.profilePage.newPostText,
+            likes: 0
+        }
+        store._state.profilePage.postsData.push(newPost)
+        store._state.profilePage.newPostText = ''
+        store._rerenderEntireTree(store._state)
+    },
+    updateNewPost: (newText) => {
+        store._state.profilePage.newPostText = newText;
+        store._rerenderEntireTree(store._state)
+    },
+    addMessage: () => {
+        let newMessage = {
+            id: 4,
+            message: store._state.dialogsPage.newMessageText,
+        }
+        store._state.dialogsPage.messagesData.push(newMessage)
+        store._state.dialogsPage.newMessageText = ''
+        store._rerenderEntireTree(store._state)
+    },
+    updateNewMessage: (newText) => {
+        store._state.dialogsPage.newMessageText = newText;
+        store._rerenderEntireTree(store._state)
+    }
 }
 
 export default store;

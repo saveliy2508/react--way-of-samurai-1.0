@@ -1,20 +1,18 @@
 import React from "react";
 import s from './Main.module.scss'
 import Posts from './MyPosts/Posts'
-import store from './../../redux/store'
 
 
 const Main = (props) => {
-
     let newPostElement = React.useRef()
     let addPost = () => {
         let text = newPostElement.current.value;
-        props.profilePage.addPost(text)
+        props.addPost(text)
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.profilePage.updateNewPost(text);
+        props.updateNewPost(text);
     }
     return (
         <div className={s.content}>
@@ -31,7 +29,7 @@ const Main = (props) => {
             </div>
             <Posts
                 postsData={props.profilePage.postsData}
-                addPost={props.profilePage.addPost} />
+                addPost={props.addPost} />
         </div>
     )
 }
