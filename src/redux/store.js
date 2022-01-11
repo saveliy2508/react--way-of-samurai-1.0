@@ -7,7 +7,7 @@ let store = {
     _rerenderEntireTree() {
         ReactDOM.render(
             <React.StrictMode>
-                <App store={store} state={store.getState()}/>
+                <App store={store} state={store.getState()} dispatch={store.dispatch} />
             </React.StrictMode>,
             document.getElementById('root')
         );
@@ -25,7 +25,7 @@ let store = {
                 { id: 1, message: "Hi, how are you!", likes: "15" },
                 { id: 2, message: "I am a programmer", likes: "20" },
             ],
-            newPostText: '',
+            newPostText: 'qq',
         },
 
         dialogsPage: {
@@ -45,35 +45,36 @@ let store = {
             newMessageText: '',
         },
     },
+
     getState() {
         return store._state;
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: store._state.profilePage.newPostText,
-            likes: 0
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: store._state.profilePage.newPostText,
+                likes: 0
+            }
+            store._state.profilePage.postsData.push(newPost)
+            store._state.profilePage.newPostText = ''
+            store._rerenderEntireTree(store._state)
+        } else if (action.type === 'UPDATE-NEW-POST') {
+            store._state.profilePage.newPostText = action.newText;
+            store._rerenderEntireTree(store._state)
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: 4,
+                message: store._state.dialogsPage.newMessageText,
+            }
+            store._state.dialogsPage.messagesData.push(newMessage)
+            store._state.dialogsPage.newMessageText = ''
+            store._rerenderEntireTree(store._state)
+        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
+            store._state.dialogsPage.newMessageText = action.newText;
+            store._rerenderEntireTree(store._state)
         }
-        store._state.profilePage.postsData.push(newPost)
-        store._state.profilePage.newPostText = ''
-        store._rerenderEntireTree(store._state)
-    },
-    updateNewPost: (newText) => {
-        store._state.profilePage.newPostText = newText;
-        store._rerenderEntireTree(store._state)
-    },
-    addMessage: () => {
-        let newMessage = {
-            id: 4,
-            message: store._state.dialogsPage.newMessageText,
-        }
-        store._state.dialogsPage.messagesData.push(newMessage)
-        store._state.dialogsPage.newMessageText = ''
-        store._rerenderEntireTree(store._state)
-    },
-    updateNewMessage: (newText) => {
-        store._state.dialogsPage.newMessageText = newText;
-        store._rerenderEntireTree(store._state)
     }
 }
 

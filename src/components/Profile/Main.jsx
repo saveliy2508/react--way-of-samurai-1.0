@@ -7,13 +7,14 @@ const Main = (props) => {
     let newPostElement = React.useRef()
     let addPost = () => {
         let text = newPostElement.current.value;
-        props.addPost(text)
+        props.dispatch({ type: 'ADD-POST', text: text })
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPost(text);
+        props.dispatch({ type: 'UPDATE-NEW-POST', newText: text });
     }
+
     return (
         <div className={s.content}>
             <div className={s.avatar_wrapper}>
