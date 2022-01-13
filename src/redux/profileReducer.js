@@ -10,7 +10,6 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-    debugger
     if (action.type === ADD_POST) {
         let newPost = {
             id: 5,
