@@ -6,27 +6,20 @@ import MainConteiner from './components/Profile/MainConteiner';
 import DialogsConteiner from './components/Dialogs/DialogsConteiner'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-const App = (props) => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className="wrapper">
         <div className='social'>
           <Header />
-          <Side
-            friends={props.store.getState().sidebar.friends}
-          />
+          <Side />
           <div className="content-wrapper">
             <Routes>
               <Route path='/profile/*' element={
-                <MainConteiner
-                  store={props.store}
-                />}
+                <MainConteiner />}
               />
               <Route path='/message/*' element={
-                <DialogsConteiner
-                  store={props.store}
-                  dialogsPage={props.store.getState().dialogsPage}
-                />
+                <DialogsConteiner />
               } />
             </Routes>
           </div>
