@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './../index.css';
 import App from './../App';
+import profileReducer from './profileReducer'
+import dialogsReducer from './dialogsReducer'
+import sideReducer from './sideReducer'
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
@@ -13,7 +16,7 @@ let store = {
     _rerenderEntireTree() {
         ReactDOM.render(
             <React.StrictMode>
-                <App store={store} state={store.getState()} dispatch={store.dispatch} />
+                <App store={store} state={store.getState()} dispatch={store.dispatch.bind(store)} />
             </React.StrictMode>,
             document.getElementById('root')
         );
@@ -33,7 +36,6 @@ let store = {
             ],
             newPostText: 'qq',
         },
-
         dialogsPage: {
             messagesData: [
                 { id: 1, message: 'Hi' },
@@ -53,54 +55,16 @@ let store = {
     },
 
     getState() {
-        return store._state;
+        return this._state;
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: store._state.profilePage.newPostText,
-                likes: 0
-            }
-            store._state.profilePage.postsData.push(newPost)
-            store._state.profilePage.newPostText = ''
-            store._rerenderEntireTree(store._state)
-        } else if (action.type === 'UPDATE-NEW-POST') {
-            store._state.profilePage.newPostText = action.newText;
-            store._rerenderEntireTree(store._state)
-        } else if (action.type === 'ADD-MESSAGE') {
-            let newMessage = {
-                id: 4,
-                message: store._state.dialogsPage.newMessageText,
-            }
-            store._state.dialogsPage.messagesData.push(newMessage)
-            store._state.dialogsPage.newMessageText = ''
-            store._rerenderEntireTree(store._state)
-        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-            store._state.dialogsPage.newMessageText = action.newText;
-            store._rerenderEntireTree(store._state)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.sidebar = sideReducer(this._state.sidebar, action)
+        this._rerenderEntireTree(this._state)
     }
 }
-
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
-export const updateNewPostActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST,
-        newText: text,
-    }
-}
-
-export const addMessageActionCreator = () => ({type:ADD_MESSAGE})
-export const updateNewMessageActionCreator = (text) => ({
-    type: UPDATE_NEW_MESSAGE,
-    newText: text,
-})
 
 export default store;
 window.store = store;

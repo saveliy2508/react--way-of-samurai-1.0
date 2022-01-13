@@ -1,18 +1,16 @@
 import React from "react";
 import s from './Main.module.scss'
 import Posts from './MyPosts/Posts'
-import {addPostActionCreator,updateNewPostActionCreator} from './../../redux/store'
+import {addPostActionCreator,updateNewPostActionCreator} from './../../redux/profileReducer'
 
 
 const Main = (props) => {
-
-    let newPostElement = React.useRef()
     let addPost = () => {
         props.dispatch(addPostActionCreator())
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
+    let onPostChange = (e) => {
+        let text = e.currentTarget.value;
         props.dispatch(updateNewPostActionCreator(text));
     }
 
@@ -24,7 +22,6 @@ const Main = (props) => {
             <div className={s.area}>
                 <input type="text"
                     onChange={onPostChange}
-                    ref={newPostElement}
                     value={props.profilePage.newPostText} />
                 <br />
                 <button onClick={addPost} className="btn">Post</button>
