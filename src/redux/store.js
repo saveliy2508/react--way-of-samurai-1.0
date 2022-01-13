@@ -1,19 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './../index.css';
-import App from './../App';
 import profileReducer from './profileReducer'
 import dialogsReducer from './dialogsReducer'
 import sideReducer from './sideReducer'
 
 let store = {
-    _rerenderEntireTree() {
-        ReactDOM.render(
-            <React.StrictMode>
-                <App store={store} state={store.getState()} dispatch={store.dispatch.bind(store)} />
-            </React.StrictMode>,
-            document.getElementById('root')
-        );
+    _callSubscriber() {
+        // zaglushka
     },
     _state: {
         sidebar: {
@@ -56,7 +48,11 @@ let store = {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._state.sidebar = sideReducer(this._state.sidebar, action)
-        this._rerenderEntireTree(this._state)
+        this._callSubscriber(this._state)
+    },
+
+    subscriber(observer){
+        store._callSubscriber = observer;
     }
 }
 

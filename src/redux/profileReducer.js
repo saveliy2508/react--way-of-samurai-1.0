@@ -2,6 +2,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 
 const profileReducer = (state, action) => {
+    debugger
     if (action.type === ADD_POST) {
         let newPost = {
             id: 5,
