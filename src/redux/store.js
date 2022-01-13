@@ -6,12 +6,6 @@ import profileReducer from './profileReducer'
 import dialogsReducer from './dialogsReducer'
 import sideReducer from './sideReducer'
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
-
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
-
 let store = {
     _rerenderEntireTree() {
         ReactDOM.render(
