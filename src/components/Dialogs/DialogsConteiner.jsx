@@ -6,12 +6,10 @@ import Dialogs from './Dialogs'
 import StoreContext from "../../StoreContext";
 
 
-const DialogsConteiner = () => {
 
-    return (
-        <StoreContext.Consumer> 
+const DialogsConteiner = () => {
+    return <StoreContext.Consumer>
             {(store) => {
-                debugger
                 let addMessage = () => {
                     store.dispatch(addMessageActionCreator())
                 };
@@ -22,23 +20,24 @@ const DialogsConteiner = () => {
                 };
 
                 let messageElements = store.getState().dialogsPage.messagesData
-                    .map(m => { <Messages message={m.message} /> });
+                    .map(m => <Messages message={m.message} /> );
 
                 let dialogsElements = store.getState().dialogsPage.dialogsData
-                    .map(d => { <DialogItem name={d.name} id={d.id} /> });
+                    .map(d => <DialogItem name={d.name} id={d.id} />);
 
-                <Dialogs
-                    onAddMessage={addMessage}
-                    onMessageChange={onMessageChange}
-                    messageElements={messageElements}
-                    dialogsElements={dialogsElements}
-                    dialogsPage={store.getState().dialogsPage}
-                    dispatch={store.dispatch}
-                />
+                return (
+                    <Dialogs
+                        onAddMessage={addMessage}
+                        onMessageChange={onMessageChange}
+                        messageElements={messageElements}
+                        dialogsElements={dialogsElements}
+                        dialogsPage={store.getState().dialogsPage}
+                        dispatch={store.dispatch}
+                    />
+                )
             }
-        }
+            }
         </StoreContext.Consumer>
-    )
 }
 
 export default DialogsConteiner;

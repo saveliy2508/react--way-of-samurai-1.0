@@ -5,12 +5,11 @@ import FriendsItem from './Friends/FriendsItem'
 import StoreContext from "../../StoreContext";
 
 const Side = () => {
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                debugger
-                let friends = store.getState().sidebar.friends
-                    .map(f => <FriendsItem picture={f.picture} name={f.name} />);
+    return <StoreContext.Consumer>
+        {(store) => {
+            let friends = store.getState().sidebar.friends
+                .map(f => <FriendsItem picture={f.picture} name={f.name} />);
+            return (
                 <div className={s.side} >
                     <ul className={s.menu}>
                         <li className={s.link}>
@@ -36,8 +35,9 @@ const Side = () => {
                         </li>
                     </ul>
                 </div>
-            }}
-        </StoreContext.Consumer >)
+            )
+        }}
+    </StoreContext.Consumer >
 }
 
 export default Side;
