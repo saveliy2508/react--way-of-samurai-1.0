@@ -37,7 +37,7 @@ const Side = (props) => {
 
 let mapStateToProps = (state) => {
     let friends = state.sidebar.friends
-        .map(f => <FriendsItem picture={f.picture} name={f.name} />);
+        .map(f => <FriendsItem picture={f.picture} name={f.name} key={f.id}/>);
     return {
         friends: friends,
     }

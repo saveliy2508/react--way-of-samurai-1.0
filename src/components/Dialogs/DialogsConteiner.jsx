@@ -7,9 +7,9 @@ import {connect} from 'react-redux'
 
 let mapStateToProps = (state) => {
     let messageElements = state.dialogsPage.messagesData
-        .map(m => <Messages message={m.message} />);
+        .map(m => <Messages message={m.message} key={m.id} />);
     let dialogsElements = state.dialogsPage.dialogsData
-        .map(d => <DialogItem name={d.name} id={d.id} />);
+        .map(d => <DialogItem name={d.name} id={d.id} key={d.id} />);
     return {
         dialogsPage: state.dialogsPage,
         messageElements: messageElements,
