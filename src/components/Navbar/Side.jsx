@@ -18,6 +18,9 @@ const Side = (props) => {
                     <NavLink to="/news" className={nav => nav.isActive ? s.active : s.link}>News</NavLink>
                 </li>
                 <li className={s.link}>
+                    <NavLink to="/users" className={nav => nav.isActive ? s.active : s.link}>Users</NavLink>
+                </li>
+                <li className={s.link}>
                     <NavLink to="/music" className={nav => nav.isActive ? s.active : s.link}>Music</NavLink>
                 </li>
                 <li className={s.link}>
