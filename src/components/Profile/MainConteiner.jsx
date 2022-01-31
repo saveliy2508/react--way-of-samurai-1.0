@@ -1,6 +1,5 @@
-import React from "react";
 import { addPostActionCreator, updateNewPostActionCreator } from './../../redux/profileReducer'
-import Main from './Main'
+import ProfileWrapper from './ProfileWrapper'
 import { connect } from 'react-redux'
 
 let mapStateToProps = (state) => {
@@ -22,6 +21,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MainConteiner = connect(mapStateToProps, mapDispatchToProps)(Main);
+const MainConteiner = connect(mapStateToProps, mapDispatchToProps)(ProfileWrapper);
 
 export default MainConteiner;
