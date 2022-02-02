@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 let initialState = {
     postsData: [
@@ -7,6 +8,7 @@ let initialState = {
         { id: 2, message: "I am a programmer", likes: "20" },
     ],
     newPostText: 'qq',
+    profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -21,20 +23,33 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             newPostText: action.newText,
         };
+    } else if (action.type === SET_USER_PROFILE) {
+        return {
+            ...state,
+            profile: action.profile,
+        };
     }
     return state
 }
 
-export const addPostActionCreator = () => {
+export const addPost = () => {
     return {
         type: ADD_POST
     }
 }
-export const updateNewPostActionCreator = (text) => {
+export const updateNewPost = (text) => {
     return {
         type: UPDATE_NEW_POST,
         newText: text,
     }
 }
+
+export const setUserProfile = (profile) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile,
+    }
+}
+
 
 export default profileReducer;

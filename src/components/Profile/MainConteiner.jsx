@@ -1,26 +1,31 @@
-import { addPostActionCreator, updateNewPostActionCreator } from './../../redux/profileReducer'
-import ProfileWrapper from './ProfileWrapper'
+import React from 'react'
+import Main from './Main'
+import * as axios from 'axios'
 import { connect } from 'react-redux'
+import { setUserProfile } from './../../redux/profileReducer'
+
+class MainConteiner extends React.Component {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+            this.props.setUserProfile(response.data)
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <Main {...this.props} />
+            </div>
+        )
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
-        profilePage: state.profilePage,
+        profile: state.profilePage.profile,
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onPostChange: (e) => {
-            let text = e.currentTarget.value;
-            dispatch(updateNewPostActionCreator(text));
-        },
-        onAddPost: () => {
-            dispatch(addPostActionCreator())
-        },
-        dispatch: dispatch,
-    }
-}
-
-const MainConteiner = connect(mapStateToProps, mapDispatchToProps)(ProfileWrapper);
-
-export default MainConteiner;
+export default connect(mapStateToProps, {
+    setUserProfile,
+})(MainConteiner);

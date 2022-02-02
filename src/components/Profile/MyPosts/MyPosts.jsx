@@ -3,8 +3,9 @@ import s from './../Main.module.scss'
 import Post from './Post/Post'
 
 const Posts = (props) => {
-    let postsElement = props.postsData
+    let postsElement = props.profilePage.postsData
         .map(p => <Post message={p.message} likeCounter={p.likes} key={p.id} />)
+        debugger
     return (
         <div>
             <div className={s.area}>

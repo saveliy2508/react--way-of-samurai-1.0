@@ -12,6 +12,7 @@ class UsersPageAPIComponent extends React.Component {
             this.props.setUsersTotalCount(response.data.totalCount)
         })
     }
+    
     onPageChanged(pageNumber) {
         this.props.setCurrentPage(pageNumber)
         this.props.toggleIsFetching(true)
@@ -20,6 +21,7 @@ class UsersPageAPIComponent extends React.Component {
             this.props.toggleIsFetching(false)
         })
     }
+
     render() {
         return (
             <div>
