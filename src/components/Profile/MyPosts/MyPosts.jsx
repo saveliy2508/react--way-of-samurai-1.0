@@ -5,14 +5,27 @@ import Post from './Post/Post'
 const Posts = (props) => {
     let postsElement = props.profilePage.postsData
         .map(p => <Post message={p.message} likeCounter={p.likes} key={p.id} />)
+
+    let newPostElement = React.createRef();
+
+    let onAddPost = () => {
+        props.addPost();
+    }
+
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        props.updateNewPost(text);
+    }
+    
     return (
         <div className={s.wrapper} >
             <div className={s.area}>
                 <input type="text"
-                    onChange={props.onPostChange}
-                    value={props.profilePage.newPostText} />
+                    onChange={onPostChange}
+                    value={props.profilePage.newPostText}
+                    ref={newPostElement} />
                 <br />
-                <button onClick={props.onAddPost} className="btn">Post</button>
+                <button onClick={onAddPost} className="btn">Post</button>
             </div>
             <div className={s.posts}>
                 {postsElement}
