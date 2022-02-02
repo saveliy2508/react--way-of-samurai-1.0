@@ -1,8 +1,34 @@
 .avatar {
-    width: 150px;
+    width: 200px;
     color: aliceblue;
-    
+    padding: 10px;
     .area {
         margin-top: 50px;
+    }
+}
+.profileInfo_wraper {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-areas: "avatar" "information";
+    .avatar_wrapper {
+        grid-area: "avatar";
+    }
+    .profileInformation {
+        grid-area: "information";
+        .fullName {
+            font-size: 20px;
+            padding: 10px 0;
+        }
+        .discription {
+            font-size: 16px;
+            padding: 10px 0;
+        }
+        .contacts {
+            padding: 20px 0;
+        }
+        .contactsItem {
+            font-size: 14px;
+            padding-bottom: 5px;
+        }
     }
 }

@@ -5,9 +5,8 @@ import Post from './Post/Post'
 const Posts = (props) => {
     let postsElement = props.profilePage.postsData
         .map(p => <Post message={p.message} likeCounter={p.likes} key={p.id} />)
-        debugger
     return (
-        <div>
+        <div className={s.wrapper} >
             <div className={s.area}>
                 <input type="text"
                     onChange={props.onPostChange}
