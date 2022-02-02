@@ -3,10 +3,15 @@ import Main from './Main'
 import * as axios from 'axios'
 import { connect } from 'react-redux'
 import { setUserProfile } from './../../redux/profileReducer'
+import { useMatch } from "react-router"
 
 class MainConteiner extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+        let userId = this.props.match.params.userId;
+        if(!userId){
+            userId = 2;
+        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
             this.props.setUserProfile(response.data)
         })
     }
@@ -26,6 +31,16 @@ let mapStateToProps = (state) => {
     }
 }
 
+const withRouter = (Component) => {
+    let RouterComponent = (props) => {
+        const match = useMatch('/profile/:userId/');
+        return <Component {...props} match={match} />;
+    }
+    return RouterComponent;
+}
+
+let WithRouteUrlDataConteinerComponent = withRouter(MainConteiner);
+
 export default connect(mapStateToProps, {
     setUserProfile,
-})(MainConteiner);
+})(WithRouteUrlDataConteinerComponent);

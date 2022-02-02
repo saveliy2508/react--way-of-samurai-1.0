@@ -16,7 +16,7 @@ const App = () => {
           <Side />
           <div className="content-wrapper">
             <Routes>
-              <Route path='/profile/*' element={
+              <Route path='/profile/:userId' element={
                 <MainConteiner />}
               />
               <Route path='/message/*' element={
