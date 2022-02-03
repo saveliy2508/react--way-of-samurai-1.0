@@ -1,12 +1,17 @@
 import React from "react";
 import s from './Header.module.scss'
+import {NavLink} from 'react-router-dom'
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header className={s.header}>
-            <img className={s.logo}
+            <div><img className={s.logo}
                 src={process.env.PUBLIC_URL + '/logo.png'}
                 alt="" />
+            </div>
+            <div className={s.login}>
+                <NavLink to={'/login'}> LOGIN </NavLink>
+            </div>
         </header>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderConteiner from './components/Header/HeaderConteiner';
 import Side from './components/Navbar/Side';
 import UsersPageConteiner from './components/Users/UsersPageConteiner';
 import MainConteiner from './components/Profile/MainConteiner';
@@ -12,7 +12,7 @@ const App = () => {
     <BrowserRouter>
       <div className="wrapper">
         <div className='social'>
-          <Header />
+          <HeaderConteiner />
           <Side />
           <div className="content-wrapper">
             <Routes>
