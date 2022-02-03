@@ -9,7 +9,7 @@ const Side = (props) => {
         <div className={s.side} >
             <ul className={s.menu}>
                 <li className={s.link}>
-                    <NavLink to="/profile/2" className={nav => nav.isActive ? s.active : s.link}>Profile</NavLink>
+                    <NavLink to={`/profile/${props.userId}`} className={nav => nav.isActive ? s.active : s.link}>Profile</NavLink>
                 </li>
                 <li className={s.link} >
                     <NavLink to="/message" className={nav => nav.isActive ? s.active : s.link}>Message</NavLink>
@@ -43,6 +43,7 @@ let mapStateToProps = (state) => {
         .map(f => <FriendsItem picture={f.picture} name={f.name} key={f.id}/>);
     return {
         friends: friends,
+        userId: state.auth.userId,
     }
 }
 
